@@ -9,7 +9,7 @@ class BaseModel(models.Model):
         abstract = True
         ordering = ("-created", )
 
-class UserProfile(AbstractUser, BaseModel):
+class Urls(BaseModel):
 
     display_name = models.TextField(
         verbose_name="Nom d'affichage",
@@ -25,8 +25,8 @@ class UserProfile(AbstractUser, BaseModel):
         null=False,
         )
 
-    http_code = models.BooleanField(
-        verbose_name = "http_code",
+    description = models.BooleanField(
+        verbose_name = "description",
         default=None,
         blank=True,
         null=True,
@@ -35,16 +35,19 @@ class UserProfile(AbstractUser, BaseModel):
     def is_valid(self):
         return self.is_valid == 1
 
-    def get_display_name(self)
+    def get_display_name(self):
         return self.display_name
 
-    def get_code(self)
-            return self.http_code
+    def get_real_url(self):
+            return self.real_url
 
-    def get_code(self)
-        return self.http_code
+    def get_description(self):
+        return self.description
 
     def get_ssl_cert(response):
         pool = response.connection.poolmanager.connection_from_url(response.url)
         conn = pool.pool.get()
         return conn.stock.getpeercert()
+
+    def check_ssl_cert_errors(response):
+        return response
