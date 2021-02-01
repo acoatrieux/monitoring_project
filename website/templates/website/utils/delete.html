@@ -1,9 +1,6 @@
 {% extends "base.html" %}
-
-{% load crispy_forms_tags %}
-
 {% block title %}
-{{ title }}
+Confirmation
 {% endblock %}
 {% block content %}
 <div class="container">
@@ -11,10 +8,12 @@
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
       <div class="card card-signin my-5">
         <div class="card-body">
-          <h5 class="card-title text-center">{{ title }}</h5>
           <div class="sub_title"></div>
           <div class="custom_form_embed">
-            {% crispy form %}
+            <form method="post">{% csrf_token %}
+              <p>Etes-vous sur de vouloir supprimer cet élément : "{{ object }}"?</p>
+              <input type="submit" value="Confirm">
+            </form>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ class WebsiteModel(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name="Date de création")
     modified = models.DateTimeField(auto_now=True, verbose_name="Date de modification")
     name = models.TextField(
-        primary_key=True,
+        primary_key=False,
         verbose_name="Nom du site",
         blank=False,
     )
@@ -18,4 +18,4 @@ class WebsiteModel(models.Model):
 
     class Meta:
         abstract = False
-        ordering = ("-name",)
+        ordering = ("-created",)

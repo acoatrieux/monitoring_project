@@ -12,15 +12,15 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='WebsitesModel',
+            name='WebsiteModel',
             fields=[
                 ('created', models.DateTimeField(auto_now_add=True, verbose_name='Date de création')),
                 ('modified', models.DateTimeField(auto_now=True, verbose_name='Date de modification')),
-                ('name', models.TextField(primary_key=True, serialize=False, verbose_name='Nom du site')),
+                ('name', models.TextField(primary_key=False, serialize=False, verbose_name='Nom du site')),
                 ('url', models.TextField(default='https://google.com', verbose_name='Url du site')),
             ],
             options={
-                'ordering': ('-name',),
+                'ordering': ('-created',),
                 'abstract': False,
             },
         ),
