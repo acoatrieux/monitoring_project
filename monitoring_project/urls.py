@@ -20,7 +20,7 @@ import urls
 import website
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', include("website.urls", namespace='hello')),
     path(r'urls/', include('urls.urls', namespace='urls')),
     path(r"website/", include("website.urls", namespace="website")),
 ]

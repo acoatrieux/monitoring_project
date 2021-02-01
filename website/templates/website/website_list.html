@@ -1,0 +1,37 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+<a class="float-right btn btn-primary" href="{% url 'website:store' %}" role="button">Nouvelle url</a>
+
+<h2>Liste des urls</h2>
+{% if website %}
+
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Nom du site</th>
+    <th scope="col">Lien du site</th>
+    <th scope="col">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for website in websites %}
+  <tr>
+    <th scope="row">{{ website.name }}</th>
+    <th scope="row">{{ website.url }}</th>
+    <td>
+      <a class="btn btn-primary" href="{% url 'website:edit' website.id %}">Modifier</a>
+      <a class="btn btn-primary" href="{% url 'website:delete' website.id %}">Supprimer</a>
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% else %}
+
+<p>Aucun site n'a encore été saisi</p>
+
+{% endif %}
+
+{% endblock content %}
